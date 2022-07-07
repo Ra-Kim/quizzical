@@ -41,7 +41,6 @@ export default function Quiz(props){
                         .catch((err) => console.log(err))  
         
         
-        // console.log(questions)
     }, [])
 
     useEffect(() => {
@@ -67,7 +66,6 @@ export default function Quiz(props){
         }
         setScore(_score)
 
-
         if(_score === generatedQuestions.length){
             setAllCorrect(true)
         }
@@ -92,9 +90,10 @@ export default function Quiz(props){
             </div>
             <div className='quiz-field'>
             {generatedQuestions.map((question, index) => {
+                let displayQ = (question.question).replace(/&#039;/g, "'").replace(/&quot;/g, '"').replace(/&eacute;/g,"e").replace(/&ouml;/g, "o")
                 return (
                 <div key={index} className='question'>
-                    <h4>{question.question}</h4>
+                    <h4>{displayQ}</h4>
                     <div className='options'>
                         {question.options.map(
                             (answer, idx) => 
